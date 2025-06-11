@@ -240,16 +240,7 @@ const App = () => {
             <nav className="hidden lg:flex space-x-8">
               <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-700 hover:text-green-700 transition-colors">Home</button>
               <a href="#about" className="text-gray-700 hover:text-green-700 transition-colors">About Us</a>
-              <div className="relative group">
-                <button className="flex items-center text-gray-700 hover:text-green-700 transition-colors">
-                  Products <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="py-2">
-                    <a href="#products" className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-700">Products</a>
-                  </div>
-                </div>
-              </div>
+              <a href="#products" className="text-gray-700 hover:text-green-700 transition-colors">Products</a>
               <a href="#why-us" className="text-gray-700 hover:text-green-700 transition-colors">Why Green Space</a>
               <a href="#projects" className="text-gray-700 hover:text-green-700 transition-colors">Projects</a>
               <a href="#contact" className="text-green-700 font-semibold">Contact Us</a>
@@ -541,7 +532,7 @@ const App = () => {
                     className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                       formErrors.phone ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    placeholder="+91 87001 02879"
+                    placeholder="+91 98705 72461"
                   />
                   {formErrors.phone && <p className="mt-1 text-sm text-red-500">{formErrors.phone}</p>}
                 </div>
@@ -601,22 +592,27 @@ const App = () => {
                     <MapPin className="h-6 w-6 text-green-600 mt-1" />
                     <div>
                       <p className="text-gray-700">
-                        123 Green Energy Park,<br />
-                        Sector 21, Gurugram,<br />
-                        Haryana - 122001
+                        H.No.6, Khasra No.184,<br />
+                        Near Bus Stand Laldora Extention,<br />
+                        Vill. Garhi Randhala Delhi-110081
                       </p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4">
                     <Phone className="h-6 w-6 text-green-600" />
-                    <a href="tel:+918700102879" className="text-gray-700 hover:text-green-600 transition-colors">
-                      +91 87001 02879
-                    </a>
+                    <div className="space-y-1">
+                      <a href="tel:+919870572461" className="text-gray-700 hover:text-green-600 transition-colors block">
+                        +91 98705 72461
+                      </a>
+                      <a href="tel:+918700102879" className="text-gray-700 hover:text-green-600 transition-colors block">
+                        +91 87001 02879
+                      </a>
+                    </div>
                   </div>
                   <div className="flex items-center space-x-4">
                     <Mail className="h-6 w-6 text-green-600" />
-                    <a href="mailto:info@greenspaceenergies.com" className="text-gray-700 hover:text-green-600 transition-colors">
-                      info@greenspaceenergies.com
+                    <a href="mailto:gspaceenergies@gmail.com" className="text-gray-700 hover:text-green-600 transition-colors">
+                      gspaceenergies@gmail.com
                     </a>
                   </div>
                 </div>
@@ -643,7 +639,7 @@ const App = () => {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/918700102879?text=Hello%20Green%20Space%20Energies!%20I%20would%20like%20to%20inquire%20about%20solar%20solutions."
+        href="https://wa.me/919870572461?text=Hello%20Green%20Space%20Energies!%20I%20would%20like%20to%20inquire%20about%20solar%20solutions."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50"
