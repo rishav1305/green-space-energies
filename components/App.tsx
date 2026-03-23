@@ -153,9 +153,7 @@ const App = () => {
       errors.name = 'Name is required';
     }
 
-    if (!contactForm.email.trim()) {
-      errors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(contactForm.email)) {
+    if (contactForm.email.trim() && !/\S+@\S+\.\S+/.test(contactForm.email)) {
       errors.email = 'Email is invalid';
     }
 
@@ -165,13 +163,7 @@ const App = () => {
       errors.phone = 'Phone number is invalid';
     }
 
-    if (!contactForm.subject.trim()) {
-      errors.subject = 'Subject is required';
-    }
 
-    if (!contactForm.message.trim()) {
-      errors.message = 'Message is required';
-    }
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -502,7 +494,7 @@ const App = () => {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
+                      Email Address
                     </label>
                     <input
                       type="email"
@@ -539,7 +531,7 @@ const App = () => {
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
+                    Subject
                   </label>
                   <input
                     type="text"
@@ -557,7 +549,7 @@ const App = () => {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                    Message
                   </label>
                   <textarea
                     id="message"
@@ -621,13 +613,13 @@ const App = () => {
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="text-gray-400 hover:text-green-600 transition-colors">
+                  <a href="#" className="text-[#1877F2] hover:opacity-80 transition-opacity">
                     <Facebook className="h-6 w-6" />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-green-600 transition-colors">
+                  <a href="#" className="text-[#0A66C2] hover:opacity-80 transition-opacity">
                     <Linkedin className="h-6 w-6" />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-green-600 transition-colors">
+                  <a href="#" className="text-[#E4405F] hover:opacity-80 transition-opacity">
                     <Instagram className="h-6 w-6" />
                   </a>
                 </div>
