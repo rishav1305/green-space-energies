@@ -93,7 +93,7 @@ const App = () => {
     {
       title: "Rooftop Solar",
       icon: <Leaf className="h-8 w-8 text-green-600" />,
-      image: "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?w=400&h=300&fit=crop",
+      image: "https://img.freepik.com/free-photo/solar-power-power-station_1387-161.jpg?semt=ais_hybrid&w=740&q=80",
       description: "Residential and commercial rooftop solutions"
     },
     {
@@ -105,7 +105,7 @@ const App = () => {
     {
       title: "Solar Carport",
       icon: <Battery className="h-8 w-8 text-green-600" />,
-      image: "https://images.unsplash.com/photo-1595437193398-f24279553f4f?w=400&h=300&fit=crop",
+      image: "https://www.polarracking.com/wp-content/uploads/2025/06/solar-carport-benefits.jpg",
       description: "Covered parking with integrated solar panels"
     }
   ];
