@@ -593,7 +593,7 @@ const App = () => {
                     <div>
                       <p className="text-gray-700">
                         H.No.6, Khasra No.184,<br />
-                        Near Bus Stand Laldora Extention,<br />
+                        Near Bus Stand,<br />
                         Vill. Garhi Randhala Delhi-110081
                       </p>
                     </div>
