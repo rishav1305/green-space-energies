@@ -99,7 +99,7 @@ const App = () => {
     {
       title: "Solar Street Light",
       icon: <Zap className="h-8 w-8 text-green-600" />,
-      image: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=400&h=300&fit=crop",
+      image: "https://xeratech.in/blogs/img/solar-street-lights-benefits-advantages-guide.jpg",
       description: "Smart LED street lighting with solar power"
     },
     {
@@ -178,8 +178,17 @@ const App = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contactForm),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       alert('Thank you for your message! We will get back to you soon.');
       setContactForm({
         name: '',
@@ -189,8 +198,11 @@ const App = () => {
         message: ''
       });
       setFormErrors({});
+    } catch {
+      alert('Something went wrong. Please try again or contact us directly.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
