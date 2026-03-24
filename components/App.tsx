@@ -276,7 +276,7 @@ const App = () => {
       </header>
 
       {/* Hero Carousel */}
-      <section className="relative h-[600px] bg-gradient-to-r from-green-800 via-green-700 to-green-600 overflow-hidden">
+      <section className="relative h-[600px] bg-gradient-to-r from-green-600 via-green-500 to-green-400 overflow-hidden">
         <div className="absolute inset-0 bg-black bg-opacity-20" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
