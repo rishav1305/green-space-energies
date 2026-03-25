@@ -30,7 +30,6 @@ const App = () => {
     message: ''
   });
   const [formErrors, setFormErrors] = useState<ContactFormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const heroSlides = [
     {
@@ -169,40 +168,26 @@ const App = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateForm()) {
       return;
     }
 
-    setIsSubmitting(true);
+    const lines = [
+      `Name: ${contactForm.name}`,
+      contactForm.email ? `Email: ${contactForm.email}` : '',
+      `Phone: ${contactForm.phone}`,
+      contactForm.subject ? `Subject: ${contactForm.subject}` : '',
+      contactForm.message ? `Message: ${contactForm.message}` : '',
+    ].filter(Boolean).join('\n');
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(contactForm),
-      });
+    const whatsappUrl = `https://wa.me/919870572461?text=${encodeURIComponent(lines)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-
-      alert('Thank you for your message! We will get back to you soon.');
-      setContactForm({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      });
-      setFormErrors({});
-    } catch {
-      alert('Something went wrong. Please try again or contact us directly.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setContactForm({ name: '', email: '', phone: '', subject: '', message: '' });
+    setFormErrors({});
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -236,7 +221,7 @@ const App = () => {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="text-2xl font-bold text-green-800 cursor-pointer"
               >
-                <span className="text-green-600">Green Space</span> Energies
+                <span className="text-green-600">Green Space</span> <span className="text-blue-900">Energies</span>
               </button>
             </div>
 
@@ -579,10 +564,9 @@ const App = () => {
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
+                  className="w-full bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  Send via WhatsApp
                 </button>
               </form>
             </div>

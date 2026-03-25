@@ -50,13 +50,33 @@ Message: ${message || 'Not provided'}
       html: htmlBody,
     });
 
-    // Send WhatsApp notification via URL (logged for reference)
-    const whatsappMessage = encodeURIComponent(
-      `New Inquiry!\nName: ${name}\nPhone: ${phone}\nEmail: ${email || 'N/A'}\nSubject: ${subject || 'N/A'}\nMessage: ${message || 'N/A'}`
-    );
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=919870572461&text=${whatsappMessage}`;
+    // Send WhatsApp notification via Business Cloud API
+    if (process.env.WHATSAPP_ACCESS_TOKEN && process.env.WHATSAPP_PHONE_NUMBER_ID) {
+      try {
+        const whatsappBody = `📩 New Inquiry!\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📧 Email: ${email || 'N/A'}\n📋 Subject: ${subject || 'N/A'}\n💬 Message: ${message || 'N/A'}`;
 
-    return res.status(200).json({ success: true, whatsappUrl });
+        await fetch(
+          `https://graph.facebook.com/v21.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${process.env.WHATSAPP_ACCESS_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              messaging_product: 'whatsapp',
+              to: '919870572461',
+              type: 'text',
+              text: { body: whatsappBody },
+            }),
+          }
+        );
+      } catch (whatsappError) {
+        console.error('WhatsApp send error:', whatsappError);
+      }
+    }
+
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.error('Email send error:', error);
     return res.status(500).json({ error: 'Failed to send email' });
