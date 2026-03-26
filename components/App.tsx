@@ -40,7 +40,7 @@ const App = () => {
     {
       title: "HARNESS THE SUN'S UNLIMITED POWER",
       subtitle: "SUSTAINABLE | EFFICIENT | FUTURE-READY",
-      description: "Transform sunlight into savings with our advanced solar technology. Join thousands of satisfied customers who have made the switch to clean, renewable energy."
+      description: "Transform sunlight into savings with our advanced solar technology. Join hundreds of satisfied customers who have made the switch to clean, renewable energy."
     },
     {
       title: "SOLAR SOLUTIONS FOR A GREENER FUTURE",
@@ -156,9 +156,7 @@ const App = () => {
       errors.email = 'Email is invalid';
     }
 
-    if (!contactForm.phone.trim()) {
-      errors.phone = 'Phone number is required';
-    } else if (!/^[\+]?[1-9][\d]{0,15}$/.test(contactForm.phone.replace(/\s/g, ''))) {
+    if (contactForm.phone.trim() && !/^[\+]?[1-9][\d]{0,15}$/.test(contactForm.phone.replace(/\s/g, ''))) {
       errors.phone = 'Phone number is invalid';
     }
 
@@ -368,7 +366,7 @@ const App = () => {
                 <h3 className="text-xl font-semibold">Our Impact</h3>
               </div>
               <p className="text-gray-600">
-                We've helped thousands of customers reduce their carbon footprint and achieve energy independence through solar power.
+                We've helped hundreds of customers reduce their carbon footprint and achieve energy independence through solar power.
               </p>
             </div>
           </div>
@@ -510,7 +508,7 @@ const App = () => {
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
+                    Phone Number
                   </label>
                   <input
                     type="tel"
